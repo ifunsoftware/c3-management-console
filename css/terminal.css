@@ -1,0 +1,76 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, .terminal-output {
+    background: #111;
+    color: #BFBFBF;
+    font: 12px Mono, Monaco, "Lucida Console", "Courier New", Courier;
+    padding: 5px;
+}
+
+.terminal-output {
+    padding: 0;
+    border: none;
+    resize: none;
+    width:100%;
+    outline: none;
+    display: block;
+}
+
+a {
+    color: #CDA869;
+    text-decoration: none;
+}
+a:active, a:hover {
+    color: #CF6A4C;
+    text-decoration: underline;
+}
+
+b {
+    color: #fff;
+    font-weight: normal;
+}
+
+div {
+    overflow: hidden;
+}
+
+div.terminal-input {
+    white-space: pre;
+}
+
+span {
+    float: left;
+}
+span.cursor {
+    background-color: #0f0;
+    height: 16px;
+    width: 10px;
+}
+span.commandhelp {
+    width: 120px;
+}
+span.date {
+    color: #aaa;
+    width: 100px;
+}
+span.title {
+    width: 260px;
+}
+img {
+    float: left;
+    margin-right: 5px;
+}
+
+td {
+    padding-right: 5px;
+}
+td.filesize {
+    text-align: right;
+}
+td.dir {
+    color: #75f;
+}
