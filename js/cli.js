@@ -14,12 +14,28 @@ var cli = {
     ],
 
     state: {
-        c3Host: 'localhost:7373',
+        c3Host: null,
         c3User: null,
         c3Password: null
     },
 
     execute: function(command, context, onComplete){
+
+        var splitCommand = command.split(" ");
+
+        if(splitCommand[0] == "connect"){
+            if(splitCommand.length < 4){
+                onComplete(context, 'Not enough arguments')
+                return;
+            }else{
+                this.state.c3Host = splitCommand[1];
+                this.state.c3User = splitCommand[2];
+                this.state.c3Password = splitCommand[3];
+                onComplete(context, '');
+                return;
+            }
+        }
+
 
         if(command.indexOf(' @file') < 0){
             runCliCommand(context, command, function(response){
@@ -46,7 +62,11 @@ var cli = {
     },
 
     prompt: function(context){
-        return context.cli.state.c3Host + "# ";
+        if(context.cli.state.c3Host == null){
+            return '# ';
+        }else{
+            return context.cli.state.c3Host + '# ';
+        }
     }
 };
 

@@ -195,8 +195,15 @@ var Terminal = {
     run: function() {
         var command = this.currentCommand.text();
 
-        this.commandHistory.push(command);
-        this.commandHistoryIndex = this.commandHistory.length;
+        var positionInHistory = $.inArray(command, this.commandHistory);
+
+        if(positionInHistory < 0){
+            this.commandHistory.push(command);
+            this.commandHistoryIndex = this.commandHistory.length;
+        }else{
+            this.commandHistory.splice(positionInHistory, 1);
+            this.commandHistory.push(command);
+        }
 
         this.storeCommandHistory();
 
